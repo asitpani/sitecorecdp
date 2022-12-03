@@ -85,3 +85,50 @@ function login(email) {
     Boxever.eventCreate(identityEvent, function(data){}, 'json');
   });
 }
+
+function sendConfirmEvent() {
+  //place an anonymous function in the Boxever queue
+  _boxeverq.push(function() { 
+    var confirmEvent = {
+      browser_id: Boxever.getID(),
+      channel: "WEB",
+      type: "CONFIRM",
+      language: "EN",
+      currency: "USD",
+      page: window.location.href,
+      pos: " ", // Replace with the same point of sale configured in system settings
+      product: [
+        {
+          item_id: "ITEM_1"
+        }
+      ]
+    };
+    //Add UTM params
+    confirmEvent = Boxever.addUTMParams(confirmEvent);
+    // Invoke event create 
+    // (<event msg>, <callback function>, <format>)
+    Boxever.eventCreate(confirmEvent, function(data){}, 'json');
+  });
+}
+
+function sendCheckoutEvent() {
+  //place an anonymous function in the Boxever queue
+  _boxeverq.push(function() { 
+    var checkoutEvent = {
+      browser_id: Boxever.getID(),
+      channel: "WEB",
+      type: "CHECKOUT",
+      language: "EN",
+      currency: "USD",
+      page: window.location.href,
+      pos: " ", // Replace with the same point of sale configured in system settings
+      reference_id: "ORDER_111",
+      status: "PURCHASED"
+    };
+    //Add UTM params
+    checkoutEvent = Boxever.addUTMParams(checkoutEvent);
+    // Invoke event create 
+    // (<event msg>, <callback function>, <format>)
+    Boxever.eventCreate(checkoutEvent, function(data){}, 'json');
+  });
+}
