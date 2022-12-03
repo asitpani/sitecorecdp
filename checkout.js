@@ -135,6 +135,8 @@ function Checkout() {
     let productElement = document.getElementById(itemId);
 
     Remove(productElement)
-  }
-  
+  } 
+
+  sendConfirmEvent()
+  sendCheckoutEvent()
 }
