@@ -34,3 +34,33 @@ _boxeverq.push(function() {
   // (<event msg>, <callback function>, <format>)
   Boxever.eventCreate(viewEvent, function(data){}, 'json');
 });
+
+function sendAddEvent(productType,item_id,productName,productPrice,productid,productCurrency) {
+  //place an anonymous function in the Boxever queue
+  _boxeverq.push(function() { 
+    var addEvent = {
+      browser_id: Boxever.getID(),
+      channel: "WEB",
+      type: "ADD",
+      language: "EN",
+      currency: "USD",
+      page: window.location.href,
+      pos: " ", // Replace with the same point of sale configured in system settings
+        product: {
+          type: productType,
+          item_id: item_id,
+          name: productName,
+          orderedAt: new Date().toISOString(),
+          quantity: 1,
+          price: productPrice,
+          productId: productid,
+          currencyCode: productCurrency
+        }
+    };
+    //Add UTM params
+    addEvent = Boxever.addUTMParams(addEvent);
+    // Invoke event create 
+    // (<event msg>, <callback function>, <format>)
+    Boxever.eventCreate(addEvent, function(data){}, 'json');
+  });
+}
