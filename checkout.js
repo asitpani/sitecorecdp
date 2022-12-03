@@ -76,6 +76,8 @@ function Add(productid,buttonId) {
   let productCurrency = data.product[productid].currency;
   let productPrice = data.product[productid].price;
   let productName = data.product[productid].productName;
+
+  sendAddEvent(productType,item_id,productName,productPrice,productid,productCurrency)
   
 }
 
