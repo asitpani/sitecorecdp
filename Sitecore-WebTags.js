@@ -64,3 +64,24 @@ function sendAddEvent(productType,item_id,productName,productPrice,productid,pro
     Boxever.eventCreate(addEvent, function(data){}, 'json');
   });
 }
+
+function login(email) {
+  //place an anonymous function in the Boxever queue
+  _boxeverq.push(function() { 
+    var identityEvent = {
+        browser_id: Boxever.getID(),
+        channel: "WEB",
+        type: "IDENTITY",
+        language: "EN",
+        currency: "USD",
+        page: window.location.href,
+        pos: " ", // Replace with the same point of sale configured in system settings
+        email : email
+    };
+    //Add UTM params
+    identityEvent = Boxever.addUTMParams(identityEvent);
+    // Invoke event create 
+    // (<event msg>, <callback function>, <format>)
+    Boxever.eventCreate(identityEvent, function(data){}, 'json');
+  });
+}
