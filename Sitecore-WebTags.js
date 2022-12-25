@@ -92,12 +92,13 @@ function login(email) {
         currency: "USD",
         page: window.location.href,
         pos: "alphaspingaming.com", // Replace with the same point of sale configured in system settings
-        email : email
+        email : email,
+        "identifiers": [{
+            "provider": "BOXEVER_IDENTITY_SYSTEM",
+            "id": email
+        }]
     };
-    //Add UTM params
-    identityEvent = Boxever.addUTMParams(identityEvent);
-    // Invoke event create 
-    // (<event msg>, <callback function>, <format>)
+    
     Boxever.eventCreate(identityEvent, function(data){}, 'json');
   });
 }
