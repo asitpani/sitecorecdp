@@ -65,6 +65,20 @@ function sendAddEvent(productType,item_id,productName,productPrice,productid,pro
   });
 }
 
+function forceClose() {
+ _boxeverq.push(function () {
+    var addEvent = {
+        "browser_id": Boxever.getID(),
+        "channel": "WEB",
+        "type": "FORCE_CLOSE",
+        "currency": "USD",
+        "language": "EN"
+    };
+
+    Boxever.eventCreate(addEvent, function (data) { }, 'json');
+});  
+}
+
 function login(email) {
   //place an anonymous function in the Boxever queue
   _boxeverq.push(function() { 
