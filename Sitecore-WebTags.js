@@ -26,7 +26,7 @@ _boxeverq.push(function() {
       "language": "EN",
       "currency": "USD",
       "page": window.location.href,
-      "pos": " "  // Replace with the same point of sale configured in system settings
+      "pos": "alphaspingaming.com"  // Replace with the same point of sale configured in system settings
   };
   //Add UTM params
   viewEvent = Boxever.addUTMParams(viewEvent);
@@ -45,7 +45,7 @@ function sendAddEvent(productType,item_id,productName,productPrice,productid,pro
       language: "EN",
       currency: "USD",
       page: window.location.href,
-      pos: " ", // Replace with the same point of sale configured in system settings
+      pos: "alphaspingaming.com", // Replace with the same point of sale configured in system settings
         product: {
           type: productType,
           item_id: item_id,
@@ -72,11 +72,13 @@ function forceClose() {
         "channel": "WEB",
         "type": "FORCE_CLOSE",
         "currency": "USD",
-        "language": "EN"
+        "language": "EN",
+        pos:"alphaspingaming.com"
     };
 
     Boxever.eventCreate(addEvent, function (data) { }, 'json');
-});  
+});
+    alert('force close successful');
 }
 
 function login(email) {
@@ -89,7 +91,7 @@ function login(email) {
         language: "EN",
         currency: "USD",
         page: window.location.href,
-        pos: " ", // Replace with the same point of sale configured in system settings
+        pos: "alphaspingaming.com", // Replace with the same point of sale configured in system settings
         email : email
     };
     //Add UTM params
@@ -110,7 +112,7 @@ function sendConfirmEvent() {
       language: "EN",
       currency: "USD",
       page: window.location.href,
-      pos: " ", // Replace with the same point of sale configured in system settings
+      pos: "alphaspingaming.com", // Replace with the same point of sale configured in system settings
       product: [
         {
           item_id: "ITEM_1"
@@ -135,7 +137,7 @@ function sendCheckoutEvent() {
       language: "EN",
       currency: "USD",
       page: window.location.href,
-      pos: " ", // Replace with the same point of sale configured in system settings
+      pos: "alphaspingaming.com", // Replace with the same point of sale configured in system settings
       reference_id: "ORDER_111",
       status: "PURCHASED"
     };
