@@ -32,6 +32,25 @@ var _boxeverq = _boxeverq || [];
         "json"
     );
 
+          
+    const customEvent = {
+        browser_id: Boxever.getID(),
+        channel: "WEB",
+        type: "ASITCUSTOMEVENT",
+        language: "EN",
+        currency: "EUR",
+        page: "home",
+        pos: "alphaspingaming.com",
+        AsitAttribute1: "att1value", 
+        AsitAttribute2: "att2value"
+    };
+    
+     Boxever.eventCreate(
+        customEvent,
+        () => {},
+        "json"
+    );
+
     // Log the browser ID to the console
     console.log("Copy-paste the following line into Sitecore CDP, Customer Data, Guests, Search field:");
     console.log(`bid: ${Boxever.getID()}`);
