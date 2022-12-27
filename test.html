@@ -20,7 +20,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
   </div>
 
+  <script>
   
+      _boxeverq.push(() => {
+    // Create a "VIEW" event object
+    const viewEvent = {
+         "browser_id": Boxever.getID(),
+      "channel": "WEB",
+      "type": "VIEW",
+      "language": "EN",
+      "currency": "USD",
+      "page": window.location.href,
+      "pos": "alphaspingaming.com"
+    };
+
+    // Send the event data to the server
+    Boxever.eventCreate(
+        viewEvent,
+        () => {},
+        "json"
+    );
+
+    // Log the browser ID to the console
+    console.log("Copy-paste the following line into Sitecore CDP, Customer Data, Guests, Search field:");
+    console.log(`bid: ${Boxever.getID()}`);
+});
+  
+  </script>
   
 </body>
 </html>
